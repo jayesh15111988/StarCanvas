@@ -1,7 +1,7 @@
 	$(document).ready(function() {
 	    var can = document.getElementById("starsCanvas");
 	    var numberOfStars = 200;
-
+var maximumStarRadiusThreshold=2.5;
 	    if (can.width < window.innerWidth) {
 	        can.width = window.innerWidth;
 
@@ -25,9 +25,9 @@
 
 	        ctx.save();
 	        ctx.beginPath();
-	        ctx.arc(can.width - 70, 40, 30, 0, 2 * Math.PI);
+	        ctx.arc(can.width - 140, 80, 60, 0, 2 * Math.PI);
 	        ctx.clip();
-	        ctx.fillRect(can.width - 100, 10, 60, 60);
+	        ctx.fillRect(can.width - 200, 20, 120, 120);
 	        ctx.restore();
 
 	        for (var i = 0; i < particle.length; i++) {
@@ -40,7 +40,7 @@
 
 	            ctx.fillStyle = grad;
 	            ctx.arc(part.x, part.y, part.radius, 0, 2 * Math.PI, false);
-	            part.x -= 0.5;
+	            part.x -= 1.0;
 	            if (part.x < 0) {
 	                part.x = can.width - part.x;
 
@@ -49,9 +49,9 @@
 	            ctx.closePath();
 	            ctx.fill();
 
-	            part.radius += Math.random(20);
-	            if (part.radius > Math.random(25, 30)) {
-	                part.radius = Math.random(25, 25);
+	            part.radius += Math.random(10,30);
+	            if (part.radius > maximumStarRadiusThreshold) {
+	                part.radius = Math.random(5, 35);
 	            }
 
 	        }
@@ -89,6 +89,6 @@
 	        particle.push(new ranpoint());
 
 	    }
-	    setInterval(draw, 33);
+	    setInterval(draw, 60);
 
 	});
