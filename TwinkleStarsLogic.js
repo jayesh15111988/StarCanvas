@@ -17,7 +17,7 @@
 
 	    function draw() {
 	        ctx.globalCompositeOperation = "source-over";
-	        ctx.fillStyle = "rgba(0,0,0,0.3)";
+	        ctx.fillStyle = "rgba(0,0,0,0.5)";
 	        ctx.fillRect(0, 0, can.width, can.height);
 	        ctx.globalCompositeOperation = "lighter";
 
@@ -40,8 +40,8 @@
 
 	            ctx.fillStyle = grad;
 	            ctx.arc(part.x, part.y, part.radius, 0, 2 * Math.PI, false);
-	            part.x += 0.5;
-	            if (part.x > can.width) {
+	            part.x -= 0.5;
+	            if (part.x < 0) {
 	                part.x = can.width - part.x;
 
 	            }
@@ -51,7 +51,7 @@
 
 	            part.radius += Math.random(20);
 	            if (part.radius > Math.random(25, 30)) {
-	                part.radius = Math.random(20, 25);
+	                part.radius = Math.random(25, 25);
 	            }
 
 	        }
